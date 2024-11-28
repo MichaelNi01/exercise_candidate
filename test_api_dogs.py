@@ -45,13 +45,13 @@ def create_dog():
 
 def test_create_dog(create_dog):
     dog_data = create_dog["data"]
-    assert dog_data["breed"] == VALID_DOG["breed"],f"Error expected name {VALID_DOG["breed"]}, got {dog_data["brees"]}"
-    assert dog_data["age"] == VALID_DOG["age"],f"Error expected name {VALID_DOG['name']}, got {dog_data["name"]}"
-    assert dog_data["name"] == VALID_DOG["name"],f"Error expected name {VALID_DOG['name']}, got {dog_data["name"]}"
+    assert dog_data["breed"] == VALID_DOG["breed"]
+    assert dog_data["age"] == VALID_DOG["age"]
+    assert dog_data["name"] == VALID_DOG["name"]
 
 def test_create_invalid_dog():
     response = requests.post(URL,json=INVALID_DOG)
-    assert response.status_code in [400,422], f"Error: Expected status code 400 or 422, got {response.status_code}"
+    assert response.status_code in [400,422]
     assert "Invalid Doggy Payload" in response.text
 
 def test_view_valid_dog(create_dog):
